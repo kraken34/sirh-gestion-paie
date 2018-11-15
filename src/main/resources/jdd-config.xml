@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	
+	<import resource="classpath:cotisations-non-imposables.xml" />
+	
+	<bean id="profil1" class="dev.paie.entite.ProfilRemuneration">
+		<property name="id" value="0"></property>
+		<property name="code" value="P0"></property>
+		<property name="cotisations">
+			<util:list value-type="dev.paie.entite.Cotisation">
+				<ref bean="ep01" />
+			</util:list>
+		</property>
+	</bean>
+	<bean id="bulletin1" class="dev.paie.entite.BulletinSalaire">
+		<property name="primeExceptionnelle" value="1000"></property>
+	</bean>
+	<bean id="empoyer1" class="dev.paie.entite.RemunerationEmploye">
+		<property name="matricule" value="M01"></property>
+		<property name="entreprise" value="entreprise1"></property>
+	</bean>
+	<bean id="entreprise1" class="dev.paie.entite.Entreprise">
+		<property name="siret" value="80966785000022"></property>
+		<property name="denomination" value="Dev Entreprise"></property>
+		<property name="codeNaf" value="6202A"></property>
+	</bean>
+</beans>
