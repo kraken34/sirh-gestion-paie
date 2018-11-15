@@ -12,14 +12,13 @@
 
 	<bean id="bulletin1" class="dev.paie.entite.BulletinSalaire">
 		<property name="primeExceptionnelle" value="1000"></property>
-		<property name="remunerationEmploye"
-			ref="remunerationEmployeB1"></property>
+		<property name="remunerationEmploye" ref="remunerationEmployeB1"></property>
 	</bean>
 
-	<bean id="remunerationEmployeB1"
-		class="dev.paie.entite.RemunerationEmploye">
+	<bean id="remunerationEmployeB1" class="dev.paie.entite.RemunerationEmploye">
 		<property name="matricule" value="M01"></property>
 		<property name="entreprise" ref="entrepriseB1"></property>
+		<property name="profilRemuneration" ref="profilRemunerationB1"></property>
 	</bean>
 
 
@@ -29,12 +28,7 @@
 		<property name="codeNaf" value="6202A"></property>
 	</bean>
 
-	<bean id="profileRemunerationB1"
-		class="dev.paie.entite.ProfilRemuneration">
-		<property name="cotisation" ref="cotisationRB1"></property>
-	</bean>
-
-	<bean id="listeCotisationRB1" class="dev.paie.entite.Cotisation">
+	<bean id="profilRemunerationB1" class="dev.paie.entite.ProfilRemuneration">
 		<property name="cotisations">
 			<util:list value-type="dev.paie.entite.Cotisation">
 				<ref bean="ep01" />
@@ -47,7 +41,7 @@
 				<ref bean="ep12" />
 				<ref bean="ep19" />
 				<ref bean="ep20" />
-				<ref bean="epR1" />
+				<ref bean="epr1" />
 				<ref bean="e900" />
 				<ref bean="ep28" />
 				<ref bean="ep37" />
