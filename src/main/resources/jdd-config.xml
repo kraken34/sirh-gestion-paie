@@ -62,7 +62,3 @@
 
 </beans>
 
-
-
-<!-- importer une configuration dans une autre -->
-<import resource="classpath:cotisations-non-imposables.xml" />
