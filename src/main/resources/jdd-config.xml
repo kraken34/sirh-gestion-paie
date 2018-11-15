@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<bean id="bulletin1" class="dev.paie.entite.BulletinSalaire">
+		<property name="primeExceptionnelle" value="1000"></property>
+		<property name="remunerationEmploye" ref="remfff"></property>
+	</bean>
+	
+	<bean id="remfff" class="dev.paie.entite.RemunerationEmploye">
+		<property name="matricule" value="M01"></property>
+		<property name="entreprise" ref="enterp"></property>
+	</bean>
+	
+	<bean id="enterp" class="dev.paie.entite.Entreprise">
+		<property name="siret" value="80966785000022"> </property>
+		<property name="denomination" value="Dev Entreprise"></property>
+		<property name="codeNaf" value="6202A"></property>
+	</bean>
+
+	<bean id="" class="">
+		<property name"" ref="EP01", ref="EP02", ref="EP03", ref="EP04", ref="EP05", ref="EP06", ref="EP07", ref="EP12", ref="EP19", ref="EP20", ref="EPR1", ref="E900",
+                ref="EP28", ref="EP37""></property>
+	</bean>
+
+</beans>
