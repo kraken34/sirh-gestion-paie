@@ -43,4 +43,9 @@ public class ProfilRemuneration {
 		this.avantages = avantages;
 	}
 
-}
+	
+
+	
+	}
+
+
