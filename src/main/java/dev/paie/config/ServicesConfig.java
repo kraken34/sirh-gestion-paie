@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("dev.paie.service")
-//@ComponentScan("dev.paie.util")
+//@ComponentScan({"dev.paie.service", "dev.paie.util"})
 public class ServicesConfig {
 
 }

@@ -48,8 +48,11 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 
 		//Total Cotisation Patronale
 	    BigDecimal totalCotisationsPatronales= salaireBrut.multiply(bulletin.getRemunerationEmploye().getProfilRemuneration().getCotisations()
-				.stream().filter(c -> (c.getTauxPatronal() != null)&&(!c.getImposable()))
-				.map(c -> c.getTauxPatronal()).reduce((bd1,bd2) -> bd1.add(bd2)).orElse(new BigDecimal("0")));
+				.stream()
+				.filter(c -> (c.getTauxPatronal() != null)&&(!c.getImposable()))
+				.map(c -> c.getTauxPatronal())
+				.reduce((bd1,bd2) -> bd1.add(bd2))
+				.orElse(new BigDecimal("0")));
 	    resultat.setTotalCotisationsPatronales(paieUtils.formaterBigDecimal(totalCotisationsPatronales));
 	    totalCotisationsPatronales = new BigDecimal(resultat.getTotalCotisationsPatronales());
 	    
@@ -62,7 +65,8 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 		//Net à payer
 	    BigDecimal netAPayer = netImposable.subtract(
 	    		salaireBrut.multiply(bulletin.getRemunerationEmploye().getProfilRemuneration().getCotisations()
-	    				.stream().filter(c -> (c.getTauxSalarial() != null)&&(c.getImposable()))
+	    				.stream()
+	    				.filter(c -> (c.getTauxSalarial() != null)&&(c.getImposable()))
 	    				.map(c -> c.getTauxSalarial())
 	    				.reduce((bd1,bd2) -> bd1.add(bd2))
 	    				.orElse(new BigDecimal("0"))));
