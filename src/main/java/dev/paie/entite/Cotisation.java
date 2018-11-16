@@ -1,15 +1,27 @@
 package dev.paie.entite;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Cotisation {
 	
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String code;
 	private String libelle;
 	private BigDecimal tauxSalarial;
 	private BigDecimal tauxPatronal;
 	private Boolean imposable = false;
+	
+	@ManyToMany(mappedBy="avantages")
+	private List<ProfilRemuneration> profils;
 	
 	public String getCode() {
 		return code;

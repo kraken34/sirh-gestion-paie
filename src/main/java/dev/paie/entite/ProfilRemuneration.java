@@ -2,14 +2,26 @@ package dev.paie.entite;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+@Entity
 public class ProfilRemuneration {
 
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String code;
-
+	@ManyToMany
 	private List<Cotisation> cotisations;
-
+	@ManyToMany
 	private List<Avantage> avantages;
+	
+	@OneToMany(mappedBy="profilRemuneration")
+	private List<RemunerationEmploye> remunerationEmployes;
 
 	public Integer getId() {
 		return id;

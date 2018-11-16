@@ -2,10 +2,20 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class BulletinSalaire {
 	
+	@Id
+	@GeneratedValue
 	private Integer id;
+	@ManyToOne
 	private RemunerationEmploye remunerationEmploye;
+	@ManyToOne
 	private Periode periode;
 	private BigDecimal primeExceptionnelle;
 	

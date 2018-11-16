@@ -1,13 +1,26 @@
 package dev.paie.entite;
 
-public class Entreprise {
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Entreprise {
+	
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String siret;
 	private String denomination;
 	private String adresse;
 	private String urssaf;
 	private String codeNaf;
+	
+	@OneToMany(mappedBy="entreprise")
+	private List<RemunerationEmploye> remunerationEmployes;
 	
 	public String getDenomination() {
 		return denomination;
