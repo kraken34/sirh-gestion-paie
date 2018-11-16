@@ -48,7 +48,7 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 		//NET_A_PAYER = NET_IMPOSABLE - SOMME(COTISATION_IMPOSABLE.TAUX_SALARIAL*SALAIRE_BRUT)
 		BigDecimal netAPayer = netImposable.subtract(salaireBrut.multiply(bulletin.getRemunerationEmploye().getProfilRemuneration().getCotisations().stream()
 				.filter(c -> c.getImposable() && c.getTauxSalarial() != null)
-				.map(c -> new BigDecimal(pu.formaterBigDecimal(c.getTauxSalarial())))
+				.map(c -> c.getTauxSalarial())
 				.reduce((bd1,bd2)->bd1.add(bd2)).orElse(new BigDecimal(0))));
 		netAPayer = new BigDecimal(pu.formaterBigDecimal(netAPayer));
 		
