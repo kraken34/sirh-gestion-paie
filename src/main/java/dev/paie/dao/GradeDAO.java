@@ -1,19 +1,16 @@
 package dev.paie.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
 import dev.paie.entite.Grade;
 
 @Repository
 public class GradeDAO {
+	
 	// outil JdbcTemplate fourni par Spring JDBC
 	private JdbcTemplate jdbcTemplate;
 

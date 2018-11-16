@@ -1,4 +1,4 @@
-package dev.paie.config;
+package dev.paie;
 
 import java.math.BigDecimal;
 
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import dev.paie.config.DataSourcePostgresqlConfig;
 import dev.paie.dao.GradeDAO;
 import dev.paie.entite.Grade;
 
