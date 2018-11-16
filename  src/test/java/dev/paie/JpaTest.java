@@ -30,7 +30,7 @@ public class JpaTest {
 	
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
-		
+				
 		Cotisation cotisation1 = new Cotisation();
 		cotisation1.setCode("code1");
 		cotisation1.setLibelle("cotisation santé");
