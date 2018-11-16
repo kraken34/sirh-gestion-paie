@@ -9,14 +9,14 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @Configuration
 public class DataSourceMySQLConfig {
 
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/sirh-paie?useSSL=false");
-        dataSource.setUsername("sirh-paie");
-        dataSource.setPassword("sirh-paie");
-        return dataSource;
-    }
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/sirh-paie");
+		dataSource.setUsername("postgres");
+		dataSource.setPassword("We0u1w111996");
+		return dataSource;
+	}
 
 }
