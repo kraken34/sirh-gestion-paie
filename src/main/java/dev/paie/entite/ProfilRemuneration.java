@@ -2,15 +2,25 @@ package dev.paie.entite;
 
 import java.util.List;
 
-public class ProfilRemuneration {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
+@Entity
+public class ProfilRemuneration {
+	
+	@Id
 	private Integer id;
 	private String code;
 
+	@OneToMany
 	private List<Cotisation> cotisations;
 
+	@ManyToMany
 	private List<Avantage> avantages;
 
+	
 	public Integer getId() {
 		return id;
 	}

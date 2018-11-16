@@ -17,6 +17,7 @@
 	<bean id="sp02" class="dev.paie.entite.Cotisation">
 		<property name="code" value="SP02"></property>
 		<property name="libelle" value="URSSAF CRDS"></property>
+		<property name="tauxSalarial" value="0.005000"></property>
 		<property name="imposable" value="true"></property>
 	</bean>
 
