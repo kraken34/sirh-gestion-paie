@@ -1,7 +1,13 @@
 package dev.paie.entite;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class RemunerationEmploye {
-	
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String matricule;
 	private Entreprise entreprise;

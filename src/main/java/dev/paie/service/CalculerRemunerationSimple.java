@@ -32,6 +32,8 @@ public class CalculerRemunerationSimple implements CalculerRemunerationService {
 				.filter(c-> c.getTauxSalarial()!=null && !c.getImposable())
 				.map(c-> c.getTauxSalarial())
 				.reduce((bd1,bd2)->bd1.add(bd2)).orElse(new BigDecimal(0.0)));
+	
+	
 		return result;
 	}
 
