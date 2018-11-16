@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.Cotisation;
 import dev.paie.entite.ResultatCalculRemuneration;
+import dev.paie.util.PaieUtils;
 
 @Service
 
@@ -16,6 +17,8 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
 		// TODO Auto-generated method stub
 
+		ResultatCalculRemuneration res = new ResultatCalculRemuneration();
+		PaieUtils pU = new PaieUtils();
 //		TOTAL_RETENUE_SALARIALE = SOMME(COTISATION_NON_IMPOSABLE.TAUX_SALARIAL*SALAIRE_BRUT)
 //		TOTAL_COTISATIONS_PATRONALES = SOMME(COTISATION_NON_IMPOSABLE.TAUX_PATRONAL*SALAIRE_BRUT)
 //		NET_IMPOSABLE = SALAIRE_BRUT - TOTAL_RETENUE_SALARIALE
@@ -33,6 +36,8 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 				totalRetenuSalariale.equals(a.getTauxSalarial().multiply(salaireBrut).add(totalRetenuSalariale));
 			}
 		}
+	
+		res.setSalaireBrut(pU.formaterBigDecimal(salaireBrut));
 
 		return null;
 	}

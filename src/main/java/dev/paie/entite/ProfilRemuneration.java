@@ -2,8 +2,14 @@ package dev.paie.entite;
 
 import java.util.List;
 
-public class ProfilRemuneration {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class ProfilRemuneration {
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String code;
 

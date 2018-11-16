@@ -2,8 +2,15 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
-public class BulletinSalaire {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+
+public class BulletinSalaire {
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private RemunerationEmploye remunerationEmploye;
 	private Periode periode;
