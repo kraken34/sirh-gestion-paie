@@ -8,18 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import dev.paie.dao.SirhPaieDAO;
+import dev.paie.dao.GradeDAO;
 import dev.paie.entite.Grade;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
-@ContextConfiguration(classes =  {DataSourcePostgresqlConfig.class, SirhPaieDAO.class})
+@ContextConfiguration(classes =  {DataSourcePostgresqlConfig.class, GradeDAO.class})
 
 //Configuration JUnit pour que Spring prenne la main sur le cycle de vie du test
 @RunWith(SpringRunner.class)
 public class JdbcTemplateTest {
 
 	@Autowired
-	SirhPaieDAO paieDAO;
+	GradeDAO paieDAO;
 
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {

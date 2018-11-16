@@ -13,12 +13,12 @@ import org.springframework.stereotype.Repository;
 import dev.paie.entite.Grade;
 
 @Repository
-public class SirhPaieDAO {
+public class GradeDAO {
 	// outil JdbcTemplate fourni par Spring JDBC
 	private JdbcTemplate jdbcTemplate;
 
 	@Autowired // injection de la source de données
-	public SirhPaieDAO(DataSource datasource) {
+	public GradeDAO(DataSource datasource) {
 		this.jdbcTemplate = new JdbcTemplate(datasource);
 	}
 
