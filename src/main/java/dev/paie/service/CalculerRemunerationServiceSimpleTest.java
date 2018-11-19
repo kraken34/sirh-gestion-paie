@@ -24,7 +24,7 @@ public class CalculerRemunerationServiceSimpleTest {
 
 	    @Test
 	    public void test_calculer() {
-	        // TODO remplacer null par un objet bulletin
+	        // remplacer null par un objet bulletin
 	        ResultatCalculRemuneration resultat = remunerationService.calculer(bulletin);
 	        assertThat(resultat.getSalaireBrut(), equalTo("2683.30"));
 	        assertThat(resultat.getTotalRetenueSalarial(), equalTo("517.08"));

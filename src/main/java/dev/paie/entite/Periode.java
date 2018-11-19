@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -12,7 +13,7 @@ import javax.persistence.OneToMany;
 public class Periode {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	private Integer id;
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
