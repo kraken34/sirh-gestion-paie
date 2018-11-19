@@ -2,9 +2,18 @@ package dev.paie.entite;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name ="periode")
 public class Periode {
 	
+	@Id
+	@GeneratedValue
 	private Integer id;
 	
 	private LocalDate dateDebut;
@@ -28,7 +37,6 @@ public class Periode {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
 	
 	
 	
