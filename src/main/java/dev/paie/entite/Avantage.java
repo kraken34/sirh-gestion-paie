@@ -2,8 +2,15 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+
+
+@Entity
 public class Avantage {
 
+	@Id
 	private Integer id;
 	private String code;
 	private String nom;
