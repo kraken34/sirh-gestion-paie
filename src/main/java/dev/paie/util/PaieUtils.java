@@ -8,7 +8,7 @@ import java.util.Locale;
 
 public class PaieUtils {
 
-	public String formaterBigDecimal(BigDecimal decimal) {
+	public static String formaterBigDecimal(BigDecimal decimal) {
 		DecimalFormat df = new DecimalFormat();
 		// forcer le séparateur "." même sur un poste en français
 		df.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.UK));
