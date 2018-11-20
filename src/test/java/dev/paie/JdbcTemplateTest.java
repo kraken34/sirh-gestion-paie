@@ -1,7 +1,7 @@
 package dev.paie;
 
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
 
 import javax.sql.DataSource;
 
