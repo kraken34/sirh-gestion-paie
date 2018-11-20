@@ -14,9 +14,11 @@ public class DataSourceMySQLConfig {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         
         // TODO 2. Mettre la bonne classe du driver
+        
         dataSource.setDriverClassName("org.postgresql.Driver");
         
         // TODO 3. Mettre à jour
+        
         dataSource.setUrl("jdbc:postgresql://localhost:5432/sirh-paie");
         dataSource.setUsername("postgres");
         dataSource.setPassword("babaca1984");

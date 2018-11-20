@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="renumerationemploye")
+@Table(name ="renumeration_employe")
 public class RemunerationEmploye {
 	@Id
 	@GeneratedValue
@@ -17,8 +17,10 @@ public class RemunerationEmploye {
 	
 	@ManyToOne
 	private Entreprise entreprise;
+	
 	@ManyToOne
 	private ProfilRemuneration profilRemuneration;
+	
 	@ManyToOne
 	private Grade grade;
 	
