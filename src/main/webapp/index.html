@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PAIE</title>
+</head>
+<body>
+    <h1>SIRH - Gestion de la paie</h1>
+
+<form:select path="matricule" items="${listeMatricules}" id="matricule"></form:select>
+
+<!-- nécessite de redéfinir la méthode toString() de l'entité Entreprise pour contrôler l'affichage -->
+<form:select path="entreprise.id" items="${listeEntreprises}" itemValue="id"></form:select>
+
+
+<!-- ici c'est la propriété `denomination` de chaque entreprise qui sera affiché à l'utilisateur -->
+<form:select path="entreprise.id" items="${listeEntreprises}" itemValue="id" itemLabel="denomination"></form:select>
+    
+</body>
+</html>

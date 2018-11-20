@@ -2,8 +2,10 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -13,11 +15,12 @@ public class BulletinSalaire {
 	@Id
 	private Integer id;
 	
-	@OneToOne
+	@ManyToOne
 	private RemunerationEmploye remunerationEmploye;
 	
-	@OneToMany
+	@ManyToOne
 	private Periode periode;
+	@Column(name="prime_exceptionnelle")
 	private BigDecimal primeExceptionnelle;
 	
 	public RemunerationEmploye getRemunerationEmploye() {

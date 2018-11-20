@@ -1,5 +1,6 @@
 package dev.paie.entite;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,6 +13,7 @@ public class Entreprise {
 	private String denomination;
 	private String adresse;
 	private String urssaf;
+	@Column(name="code_naf")
 	private String codeNaf;
 	
 	public String getDenomination() {
