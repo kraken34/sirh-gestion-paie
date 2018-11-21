@@ -2,12 +2,20 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Cotisation {
 	
+	@Id
 	private Integer id;
 	private String code;
 	private String libelle;
+	@Column(name="taux_salarial")
 	private BigDecimal tauxSalarial;
+	@Column(name="taux_patronal")
 	private BigDecimal tauxPatronal;
 	private Boolean imposable = false;
 	

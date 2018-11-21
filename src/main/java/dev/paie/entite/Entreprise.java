@@ -1,12 +1,19 @@
 package dev.paie.entite;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Entreprise {
 
+	@Id
 	private Integer id;
 	private String siret;
 	private String denomination;
 	private String adresse;
 	private String urssaf;
+	@Column(name="code_naf")
 	private String codeNaf;
 	
 	public String getDenomination() {
