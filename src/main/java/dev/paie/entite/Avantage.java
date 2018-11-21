@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 public class Avantage {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String code;
 	private String nom;

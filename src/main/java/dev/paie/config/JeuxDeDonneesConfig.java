@@ -1,4 +1,4 @@
-package dev.paie.service;
+package dev.paie.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;

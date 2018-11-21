@@ -1,8 +1,12 @@
 package dev.paie.service;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.Grade;
@@ -61,6 +65,19 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 		res.setNetAPayer(pu.formaterBigDecimal(netAPayer));
 		
 		return res;
+	}
+	
+	
+	@Override
+	public Map<BulletinSalaire,ResultatCalculRemuneration> calculer(List<BulletinSalaire> bulletins)
+	{
+		Map<BulletinSalaire,ResultatCalculRemuneration> calculBulletins = new HashMap<>();
+		for (BulletinSalaire b : bulletins)
+		{
+			calculBulletins.put(b, calculer(b));
+		}
+		
+		return calculBulletins;
 	}
 
 }
