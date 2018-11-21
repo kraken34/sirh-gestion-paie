@@ -37,8 +37,8 @@ public class JdbcTemplateTest {
     public void test_sauvegarder_lister_mettre_a_jour() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         // TODO sauvegarder un nouveau grade
-       // String sql = "INSERT INTO grade(id,code,nb_heures_base,taux_base) VALUES(1,'Directeur',48,0.025)";
-       // jdbcTemplate.update(sql);
+        String sql = "INSERT INTO grade(id,code,nb_heures_base,taux_base) VALUES(1,'Directeur',48,0.025)";
+        jdbcTemplate.update(sql);
        
         // TODO vérifier qu'il est possible de récupérer le nouveau grade
         RowMapper<Grade> mapper = (ResultSet rs, int rowNum) -> {
