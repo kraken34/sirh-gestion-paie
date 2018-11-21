@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@Import(JpaConfig.class)
+@Import(ServicesConfig.class)
 @ComponentScan({"dev.paie.web.controller", "dev.paie.service", "dev.paie.web"})
 public class WebAppConfig {
 

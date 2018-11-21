@@ -11,8 +11,10 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Import(DataSourceMySQLConfig.class)
+@EnableTransactionManagement
 @Configuration
 public class JpaConfig {
 	
@@ -42,8 +44,8 @@ public class JpaConfig {
 		factory.setDataSource(dataSource);
 
 		Properties jpaProperties = new Properties(); // <2>
-		jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create"); // <2>
-		jpaProperties.setProperty("javax.persistence.sql-load-script-source", "data.sql"); // <3>
+		//jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create"); // <2>
+		//jpaProperties.setProperty("javax.persistence.sql-load-script-source", "data.sql"); // <3>
 
 		factory.setJpaProperties(jpaProperties); // <2> <3>
 

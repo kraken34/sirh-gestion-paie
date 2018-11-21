@@ -24,6 +24,7 @@ public class RemunerationEmploye {
 	@ManyToOne
 	private Grade grade;
 	
+	
 	public String getMatricule() {
 		return matricule;
 	}
@@ -55,6 +56,7 @@ public class RemunerationEmploye {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
 	
 	
 	
