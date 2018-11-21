@@ -1,6 +1,10 @@
 package dev.paie.entite;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -11,6 +15,7 @@ import javax.persistence.Table;
 public class RemunerationEmploye {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String matricule;
 	
@@ -23,6 +28,20 @@ public class RemunerationEmploye {
 	@ManyToOne
 	private Grade grade;
 	
+	private LocalDateTime pr;
+	
+	/**
+	 * @return the pr
+	 */
+	public LocalDateTime getPr() {
+		return pr;
+	}
+	/**
+	 * @param pr the pr to set
+	 */
+	public void setPr(LocalDateTime pr) {
+		this.pr = pr;
+	}
 	public String getMatricule() {
 		return matricule;
 	}
@@ -54,9 +73,14 @@ public class RemunerationEmploye {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
-	
-	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "RemunerationEmploye [id=" + id + ", matricule=" + matricule + ", entreprise=" + entreprise
+				+ ", profilRemuneration=" + profilRemuneration + ", grade=" + grade + "]";
+	}
+
 
 }

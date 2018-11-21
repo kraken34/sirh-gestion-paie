@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import dev.paie.util.PaieUtils;
+
 @Entity
 public class Grade {
 
@@ -40,6 +42,16 @@ public class Grade {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getLibelle() {
+		
+		PaieUtils paieUtil = new PaieUtils();
+		BigDecimal income = nbHeuresBase.multiply(tauxBase.multiply(new BigDecimal(12)));
+		
+		String resultLibelle = this.code + " - " + paieUtil.formaterBigDecimal(income) + "$ / an";
+		
+		return resultLibelle;
 	}
 	
 	
