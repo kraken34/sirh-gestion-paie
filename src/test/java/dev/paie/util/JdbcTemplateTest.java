@@ -12,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.DataSourcePostgreConfig;
-import dev.paie.config.JeuxDeDonneesConfig;
+import dev.paie.config.JeuDonneesConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
 

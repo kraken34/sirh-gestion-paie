@@ -1,0 +1,142 @@
+body{
+	font-family: "Arial";
+}
+
+
+h1{
+	text-align: center;
+	margin-top: 50px;
+}
+
+#menu ul{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#menu a{
+	padding: 14px 20px;
+	color: black;
+	text-decoration: none;
+}
+
+#menu li{
+	list-style: none;
+	border-left: 1px solid black;
+}
+
+.button{
+	background-color: black; 
+	color: white;
+	padding: 14px 20px;
+	margin: 0 2%;
+	text-decoration: none;
+}
+
+.bandeauBouton{
+	width: 80%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+#tableau{
+	width: 50%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+#tableauBulletin{
+	width: 80%;
+	margin: auto;
+}
+
+#tableau th, #tableauBulletin th, #tableau td, #tableauBulletin td{
+	padding: 10px 5px;
+}
+
+
+#tableau td, #tableauBulletin td{
+	border: 0.5px solid black;
+}
+
+#tableau th, #tableauBulletin th{
+	border: 0.5px solid white;
+}
+
+thead{
+	background-color: black;
+	color: white;
+}
+
+
+.callToAction{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 50px 0px;
+}
+
+
+form{
+	display: flex;
+	width: 20%;
+	flex-direction: column;
+	margin: auto;
+}
+
+select{
+	margin: 2% 0;
+}
+
+select, input{
+	min-height: 30px;
+}
+
+table{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+
+#buttonForm{
+	background-color: black;
+	color: white;
+	text-transform: uppercase;
+	border: 0;
+	cursor: pointer;
+}
+
+
+
+
+/*==================================================VISUALISER BULLETIN==========================*/
+.periode{
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	text-align: right;
+	padding-right: 25px;
+}
+
+.entete{
+	font-size: 20px;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+
+.infoEntreprise{
+	display: flex;
+	flex-direction: column;	
+}
+
+#tableau .entete{
+	width: 100%;
+	text-align: center;
+}

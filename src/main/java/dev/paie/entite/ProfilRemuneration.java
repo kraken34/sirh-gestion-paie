@@ -3,18 +3,25 @@ package dev.paie.entite;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="profil_remuneration")
 public class ProfilRemuneration {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String code;
 	
 	@ManyToMany
+	@JoinTable(name = "profil_remuneration_cotisation", joinColumns = @JoinColumn(name="profil_remuneration_id", referencedColumnName="id"), inverseJoinColumns = @JoinColumn(name="cotisation_id", referencedColumnName="id") )
 	private List<Cotisation> cotisations;
 
 	@ManyToMany
@@ -52,4 +59,13 @@ public class ProfilRemuneration {
 		this.avantages = avantages;
 	}
 
+	@Override
+	public String toString() {
+		return "ProfilRemuneration [id=" + id + ", code=" + code + ", cotisations=" + cotisations + ", avantages="
+				+ avantages + "]";
+	}
+
+	
+	
+	
 }
