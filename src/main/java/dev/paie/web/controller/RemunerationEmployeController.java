@@ -56,8 +56,22 @@ public class RemunerationEmployeController {
         ModelAndView mv = new ModelAndView();
         
         employeRepo.save(employe);
+
+		mv.setViewName("/creationReussie");
         	        
         return mv;
     }
+    
+
+	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	 public ModelAndView listerEmployes() {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("employes/listerEmployes");
+		
+		mv.addObject("listeEmployes", employeRepo.findAll());
+		
+		return mv;
+	}
 
 }

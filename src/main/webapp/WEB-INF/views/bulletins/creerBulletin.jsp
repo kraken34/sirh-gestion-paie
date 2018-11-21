@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<h1>Créer Employe</h1>
+	<h1>Créer Bulletin</h1>
 
 	<header>
 		<%@include file="../../menu.jsp"%>
@@ -17,22 +17,22 @@
 	<div class="container">
 		<div class="row justify-content-around align-items-center">
 			<div class="col-12 col-md-offset-2 col-md-8 text-center">
-				<form:form method="POST" modelAttribute="employe">
+				<form:form method="POST" modelAttribute="bulletinSalaire">
 
-					<label>Matricule de l'employé :</label>
-					<form:input path="matricule" />
+
+					<label>Période du Bulletin :</label>
+					<form:select path="periode.id" items="${listePeriodes}"
+								itemLabel="libelle" itemValue="id" />
 					<br />
-					<label>Entreprise de l'employé :</label>
-					<form:select path="entreprise.id" items="${listeEntreprises}"
-						itemLabel="denomination" itemValue="id" />
+
+					<label>Matricule de l'employé : </label>
+					<form:select path="remunerationEmploye.id" items="${listeEmployes}"
+								itemLabel="matricule" itemValue="id"/>
 					<br />
-					<label>Profil de l'employé :</label>
-					<form:select path="profilRemuneration.id" items="${listeProfiles}"
-						itemLabel="code" itemValue="id" />
+					<label>Prime exceptionnelle :</label>
+					<form:input path="primeExceptionnelle"/>
 					<br />
-					<label>Grade de l'employé :</label>
-					<form:select path="grade.id" items="${listeGrades}"
-						itemLabel="libelle" itemValue="id" />
+					
 					<br />
 					<input type="submit" value="Soumettre" />
 

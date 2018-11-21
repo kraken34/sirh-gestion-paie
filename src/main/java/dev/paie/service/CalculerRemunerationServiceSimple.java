@@ -14,13 +14,13 @@ import dev.paie.util.PaieUtils;
 public class CalculerRemunerationServiceSimple implements CalculerRemunerationService {
 
 
-//	@Autowired
-//	private PaieUtils paieUtils;
+	@Autowired
+	private PaieUtils paieUtils;
 	
 	@Override
 	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
 		
-		PaieUtils paieUtils = new PaieUtils();
+	
 		
 		ResultatCalculRemuneration resultat = new ResultatCalculRemuneration();
 		
