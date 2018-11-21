@@ -1,8 +1,13 @@
 package dev.paie.entite;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class RemunerationEmploye {
@@ -10,9 +15,28 @@ public class RemunerationEmploye {
 	@GeneratedValue
 	private Integer id;
 	private String matricule;
+	@ManyToOne
 	private Entreprise entreprise;
+	@ManyToOne
+	@JoinColumn(name = "profil_remunuration")
 	private ProfilRemuneration profilRemuneration;
+	@ManyToOne
 	private Grade grade;
+
+	private LocalDateTime date;
+
+	public String getDateFormat() {
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
+		return getDate().format(format);
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
 
 	public String getMatricule() {
 		return matricule;
