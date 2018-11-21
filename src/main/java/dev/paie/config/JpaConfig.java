@@ -1,9 +1,10 @@
 package dev.paie.config;
 
+import java.util.Properties;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -31,7 +32,7 @@ public class JpaConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(true);
+        //vendorAdapter.setGenerateDdl(true);
         // activer les logs SQL
         vendorAdapter.setShowSql(true);
 
@@ -40,6 +41,14 @@ public class JpaConfig {
         // alternative au persistence.xml
         factory.setPackagesToScan("dev.paie.entite");
         factory.setDataSource(dataSource);
+        
+        Properties jpaProperties = new Properties(); // <2>
+//        jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create"); // <2>
+//        jpaProperties.setProperty("javax.persistence.sql-load-script-source", "data.sql"); // <3>
+
+        factory.setJpaProperties(jpaProperties); // <2> <3>
+        
+        
         factory.afterPropertiesSet();
 
         return factory;

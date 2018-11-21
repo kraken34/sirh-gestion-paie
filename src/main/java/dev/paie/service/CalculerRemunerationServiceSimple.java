@@ -15,8 +15,10 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 	@Override
 	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
 		ResultatCalculRemuneration resultCalcul = new ResultatCalculRemuneration();
+		
 		BigDecimal SALAIRE_BASE = bulletin.getRemunerationEmploye().getGrade().getNbHeuresBase()
 				.multiply(bulletin.getRemunerationEmploye().getGrade().getTauxBase());
+		
 		BigDecimal SALAIRE_BRUT = SALAIRE_BASE.add(bulletin.getPrimeExceptionnelle());
 		resultCalcul.setSalaireBrut(PaieUtils.formaterBigDecimal(SALAIRE_BRUT));
 		
