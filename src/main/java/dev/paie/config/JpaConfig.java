@@ -15,7 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@Import(DataSourceMySQLConfig.class)
+@Import({DataSourceMySQLConfig.class,HerokuDBConfig.class})
 @EnableTransactionManagement
 public class JpaConfig {
 	
