@@ -76,8 +76,8 @@ public class JpaConfig {
         //Configuration du mode drop-and-create.
         Properties jpaProperties = new Properties(); // <2>
         //Je commente les 2 lignes suivantes car j'ai déjà créé ma base de données et ne souhaite pas la regénéré à chaque redémarrage
-//        jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create"); // <2>
-//        jpaProperties.setProperty("javax.persistence.sql-load-script-source", "data.sql"); // <3>
+        jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create"); // <2>
+        jpaProperties.setProperty("javax.persistence.sql-load-script-source", "data.sql"); // <3>
 
         factory.setJpaProperties(jpaProperties); // ajout d'un script SQL pour des données initiales.
 
