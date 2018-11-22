@@ -9,6 +9,7 @@
 
 <body>
 <h1>Echec!</h1>
+<p>La matricule de l'employé est invalide ou l'employé existe déjà.</p>
 
 	<header>
 		<%@include file="../menu.jsp" %>

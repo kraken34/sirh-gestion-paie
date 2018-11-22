@@ -56,21 +56,28 @@ public class RemunerationEmployeController {
 
 		ModelAndView mv = new ModelAndView();
 
-		
-		//On vérifie si la matricule existe dans l'api collegues avant de créer le nouvel employé. 
+		// On vérifie si la matricule existe dans l'api collegues avant de créer le
+		// nouvel employé.
 //        String urlApiMatricule = "http://collegues-api.cleverapps.io/collegues";
 		RestTemplate rt = new RestTemplate();
 
-		Matricule[] matriculeTrouve = rt.getForObject("http://collegues-api.cleverapps.io/collegues?matricule={matricule}",
-				Matricule[].class, employe.getMatricule());
+		Matricule[] matriculeTrouve = rt.getForObject(
+				"http://collegues-api.cleverapps.io/collegues?matricule={matricule}", Matricule[].class,
+				employe.getMatricule());
 
 		if (matriculeTrouve.length > 0) {
 
-			employeRepo.save(employe);
+			RemunerationEmploye employeExistant = employeRepo.findByMatricule(matriculeTrouve[0].getMatricule());
 
-			mv.setViewName("/creationReussie");
+			if (employeExistant == null) {
 
-			return mv;
+				employeRepo.save(employe);
+
+				mv.setViewName("/creationReussie");
+
+				return mv;
+			}
+
 		}
 
 		mv.setViewName("/echecCreation");
