@@ -64,6 +64,8 @@
 	</ul>
 				<tr>
 				<td>Total Retenue</td>
+				<td></td>
+				<td></td>
 				<td><c:out value="${Brut.totalRetenueSalarial}" /></td>
 				<td><c:out value="${Brut.totalCotisationsPatronales}" /></td>
 				</tr>
@@ -74,8 +76,7 @@
  <c:if test = "${cotisation.imposable==true}">
         <table>
 				<tr>
-					<td><c:out value="${cotisation.code}" /> <c:out
-							value="${cotisation.libelle}" /></td>
+					<td><c:out value="${cotisation.code}" /> <c:out value="${cotisation.libelle}" /></td>
 					<td><c:out value="${Brut.salaireBrut}" /></td>
 					<td><c:out value="${cotisation.tauxSalarial}" /></td>
 				</tr>
@@ -87,7 +88,6 @@
 			
 
 		</c:forEach>
-	</ul>
 	<p>NET A PAYER : <c:out value="${Brut.netAPayer}" /></p>
 </body>
 </html>

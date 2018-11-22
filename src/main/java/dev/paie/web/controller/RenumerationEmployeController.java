@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.paie.entite.Post;
 import dev.paie.entite.RemunerationEmploye;
 import dev.paie.repository.BulletinSalaireRepository;
 import dev.paie.repository.EntrepriseRepository;
@@ -49,12 +51,28 @@ public class RenumerationEmployeController {
 	    }
 	 @RequestMapping(method = RequestMethod.POST, path = "/creer")
 	 public ModelAndView submitForm(@ModelAttribute("employe") RemunerationEmploye employe) {
-		 remunerationRepository.save(employe);
+		 
+		 RestTemplate rt = new RestTemplate();
+		 Post[] result = rt.getForObject("http://collegues-api.cleverapps.io/collegues?matricule="+employe.getMatricule(), Post[].class);
+		 
+		 if(result.length > 0) {
+			 remunerationRepository.save(employe);
+			 return creerEmploye();
+		 }else {
+			 return codeErreur();
+		 }
+		
+		
 		 // insérer en base avec repository
-	     return creerEmploye();
+	     
 	 }
 	 
-	 @RequestMapping(method = RequestMethod.GET, path = "/lister")
+	 private ModelAndView codeErreur() {
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+	@RequestMapping(method = RequestMethod.GET, path = "/lister")
 	    public ModelAndView listerEmploye() {
 	        ModelAndView mv = new ModelAndView();
 	        mv.setViewName("employes/listerEmploye");

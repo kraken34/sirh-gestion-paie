@@ -13,4 +13,7 @@ import dev.paie.entite.Cotisation;
  */
 public interface CotisationRepository extends JpaRepository<Cotisation, Integer>{
 
+
+	Cotisation findByCode(String code);
+
 }
