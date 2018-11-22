@@ -1,12 +1,50 @@
 package dev.paie.entite;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="remuneration_employe")
 public class RemunerationEmploye {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String matricule;
+	
+	private ZonedDateTime date;
+	
+	public ZonedDateTime getDate() {
+		return date;
+	}
+	public void setLocalDate(ZonedDateTime date) {
+		this.date = date;
+	}
+	@ManyToOne
 	private Entreprise entreprise;
+	
+	@ManyToOne
+	@JoinColumn(name="profil_remuneration")
 	private ProfilRemuneration profilRemuneration;
+	
+	@ManyToOne
 	private Grade grade;
+	
+	
+	@PrePersist
+	public void onPersist() {
+		date = ZonedDateTime.now();
+	}
 	
 	public String getMatricule() {
 		return matricule;
