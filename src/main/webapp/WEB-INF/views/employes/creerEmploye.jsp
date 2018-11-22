@@ -21,7 +21,8 @@
 
 					<label>Matricule de l'employé :</label>
 <%-- 					<form:input path="matricule" /> --%>
-					<form:select path="matricule" items="${listeMatricules}" />
+					<form:select path="matricule" items="${listeMatricules}"
+					itemLabel="matricule" itemValue="matricule"/>
 					<br />
 					<label>Entreprise de l'employé :</label>
 					<form:select path="entreprise.id" items="${listeEntreprises}"
