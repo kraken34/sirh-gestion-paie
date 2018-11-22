@@ -8,8 +8,7 @@ import dev.paie.entite.Cotisation;
 @Repository
 public interface CotisationRepository extends JpaRepository<Cotisation, Integer> {
 
-
+	Cotisation findByCode(String code);
+	// TODO Auto-generated method stub
 
 }
-
-

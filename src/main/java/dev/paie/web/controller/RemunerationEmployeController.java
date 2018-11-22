@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.paie.entite.Matricule;
 import dev.paie.entite.RemunerationEmploye;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
@@ -55,12 +57,25 @@ import dev.paie.repository.RemunerationEmployeRepository;
 
     public ModelAndView envoyer ( @ModelAttribute("employe") RemunerationEmploye employe )  {
 		
-		remunerationEmployeRepository.save(employe);
-
-	 
-		return creerEmploye();
+		
+		
+		RestTemplate rt = new RestTemplate();
+		
+		Matricule [] result = rt.getForObject("http://collegues-api.cleverapps.io/collegues?matricule="+ employe.getMatricule(), Matricule[].class, 1);
+		
+		if (result.length == 0) {
+			
+			return creerEmploye();
+		}
+		else {
+			remunerationEmployeRepository.save(employe);
+			
+			return creerEmploye();
+		}
+		
 	}
 
+	
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
 
 	public ModelAndView afficherEmploye(){

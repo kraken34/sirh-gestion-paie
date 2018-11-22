@@ -9,9 +9,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ajouter un employe</title>
+<title>ajouter un employe </title>
 </head>
 <body>
+	
+	<h1>     creer un employé </h1>
+	<nav class="navbar navbar-default">
+		<div class="collapse navbar-collapse" id="maNavBar">
+			<ul class="nav navbar-nav">
+				<li><a href='<c:url value="/mvc/employes/lister/"></c:url>'><span
+						aria-hidden="true"></span> Employés</a></li>
+				<li><a href='<c:url value="/mvc/bulletins/creer/"></c:url>'><span
+					aria-hidden="true"></span> Bulletin </a></li>
+		</ul>
+		</div>
+	</nav>
 	
 	<form:form method="post" modelAttribute="employe">
 

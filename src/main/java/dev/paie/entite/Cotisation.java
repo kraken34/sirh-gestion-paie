@@ -26,7 +26,7 @@ public class Cotisation {
 	@Column (name="taux_patronal")
 	private BigDecimal tauxPatronal;
 	
-	
+	@Column (name = "imposable")
 	private Boolean imposable = false;
 	
 	public String getCode() {

@@ -19,7 +19,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href='<c:url value="/mvc/employes/creer/"></c:url>'><span
 						aria-hidden="true"></span> Employés</a></li>
-				<li><a href='<c:url value="/mvc/employes/lister/"></c:url>'><span
+				<li><a href='<c:url value="/mvc/bulletins/lister/"></c:url>'><span
 					aria-hidden="true"></span> Bulletin </a></li>
 		</ul>
 		</div>
