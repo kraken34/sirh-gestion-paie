@@ -42,7 +42,7 @@
 					<td><c:out value="${salairesBrut.get(bulletin)}" /></td>
 					<td><c:out value="${salairesNet.get(bulletin)}" /></td>
 					<td><c:out value="${salairesNetImposable.get(bulletin)}" /></td>
-					<td><a href="">Actions</a></td>
+					<td><a href="visualiser?idBulletin=${bulletin.id }">Actions</a></td>
 				</tr>
 
 			</c:forEach>
