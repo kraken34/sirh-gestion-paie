@@ -36,6 +36,12 @@ public class BulletinSalaireController {
 	@Autowired
 	CalculerRemunerationService calcRemSimple;
 	
+
+	/**
+	 * Requête GET : créer un bulletin.
+	 * @param Bulletin bulletin
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
 	 public ModelAndView creerBulletin() {
 		
@@ -51,6 +57,11 @@ public class BulletinSalaireController {
 		return mv;
 	}
 	
+	/**
+	 * Requête POST : créer un bulletin.
+	 * @param Bulletin bulletin
+	 * @return
+	 */
     @RequestMapping(method = RequestMethod.POST, path = "/creer")
     public ModelAndView saisieBulletin(@ModelAttribute("bulletinSalaire") BulletinSalaire bulletin) {
         
@@ -63,6 +74,10 @@ public class BulletinSalaireController {
         return mv;
     }
     
+    /**
+     * Requête Get : Lister les bulletins de salaires présents dans la base de données.
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET, path ="/lister")
     @Transactional(readOnly = true)
     public ModelAndView listerBulletins(){
@@ -78,8 +93,22 @@ public class BulletinSalaireController {
 							.map(b -> new CalculSurBulletin(b, calcRemSimple.calculer(b)))
 							.collect(Collectors.toList()));
     	
-    	return mv;
-    	
+    	return mv;	
     }
+    
+//    @RequestMapping(method = RequestMethod.GET, path ="/lister")
+//    @Transactional(readOnly =true)
+//    public ModelAndView visualiserBulletin() {
+//    	ModelAndView mv = new ModelAndView();
+//    	
+//    	mv.setViewName("visualiserBulletin");
+//    	
+//    	
+//    	
+//    	
+//    	
+//    	return mv;
+//    }
+    
 
 }

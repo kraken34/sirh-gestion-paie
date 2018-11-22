@@ -42,8 +42,7 @@ public class Matricule {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+		
 	public String getDateNaissance() {
 		return dateNaissance;
 	}
