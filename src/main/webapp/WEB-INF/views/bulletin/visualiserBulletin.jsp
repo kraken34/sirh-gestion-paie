@@ -26,7 +26,7 @@
 		<table>
 			<tr><th>Rubrique</th><th>Base</th><th>Taux salarial</th><th>Montant Salarial</th><th>Taux patronal</th><th>Cot. patronales</th></tr>
 			<tr><th>Salaire de base</th><th><c:out value="${bulletin.remunerationEmploye.grade.nbHeuresBase}"/></th>
-			<th><c:out value="${cotisations.get(0).tauxSalarial}"/></th><th><c:out value="${resCalcRem.salaireDeBase}"/></th><th></th><th></th></tr>
+			<th><c:out value="${bulletin.remunerationEmploye.grade.tauxBase}"/></th><th><c:out value="${resCalcRem.salaireDeBase}"/></th><th></th><th></th></tr>
 			<tr><th>Prime except.</th><th></th><th></th><th><c:out value="${bulletin.primeExceptionnelle}"/></th><th></th><th></th></tr>
 			<tr><th></th><th></th><th></th><th></th><th></th><th></th></tr>
 			<tr><th>Salaire brut</th><th></th><th></th><th><c:out value="${resCalcRem.salaireBrut}"/></th><th></th><th></th></tr>
