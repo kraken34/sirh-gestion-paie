@@ -8,12 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Créer un employé</title>
+<%@ include file="../menu/head/head.jsp"%>
 </head>
 <body>
+	<%@ include file="../menu/menu.jsp"%>
 
 
 <p>Employé créé</p>
-<a href="../../index.html">Retour</a>
 
 
 </body>

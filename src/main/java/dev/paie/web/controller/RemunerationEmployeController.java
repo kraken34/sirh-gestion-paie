@@ -4,12 +4,16 @@ import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.paie.entite.Collegue;
 import dev.paie.entite.RemunerationEmploye;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
@@ -49,10 +53,20 @@ public class RemunerationEmployeController {
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
 	public ModelAndView submit(@ModelAttribute("employe") RemunerationEmploye remunerationEmploye) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("employes/ok");
+		
+		// Créer un collègue selon un matricule existant via API collègue
 
-		remunerationRepo.save(remunerationEmploye);
-
+		String matricule = remunerationEmploye.getMatricule();
+		
+		RestTemplate rt = new RestTemplate();
+		Collegue[] result = rt.getForObject("http://collegues-api.cleverapps.io/collegues?matricule=", Collegue[].class, matricule);
+		
+		if(result.length == 1) {
+			remunerationRepo.save(remunerationEmploye);
+			mv.setViewName("employes/ok");
+		} else {
+			mv.setViewName("employes/erreur");
+		}
 		return mv;
 	}
 

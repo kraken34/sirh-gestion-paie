@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Créer un employé</title>
+<title>L"employé n'est pas créé</title>
 <%@ include file="../menu/head/head.jsp"%>
 
 </head>
@@ -15,7 +15,7 @@
 	<%@ include file="../menu/menu.jsp"%>
 
 
-<p>Bulletin créé</p>
+<p>!! Erreur !!</p>
 
 
 </body>

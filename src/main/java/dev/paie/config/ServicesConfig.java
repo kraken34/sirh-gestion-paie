@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
-@ComponentScan({"dev.paie.service", "dev.paie.util"})
+@ComponentScan({"dev.paie.service", "dev.paie.util", "api"})
 @Import({JpaConfig.class, DataSourcePostgreConfig.class})
 
 @EnableJpaRepositories("dev.paie.repository") // Configuration à ajouter.
