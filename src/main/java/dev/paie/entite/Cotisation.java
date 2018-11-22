@@ -1,15 +1,32 @@
 package dev.paie.entite;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Cotisation {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String code;
 	private String libelle;
+	@Column (name="taux_salarial", precision = 10, scale=6)
 	private BigDecimal tauxSalarial;
+	@Column (name="taux_patronal", precision = 10, scale=6)
 	private BigDecimal tauxPatronal;
 	private Boolean imposable = false;
+	
+	@ManyToMany(mappedBy = "cotisations")
+	private List<ProfilRemuneration> profils;
+	
 	
 	public String getCode() {
 		return code;
