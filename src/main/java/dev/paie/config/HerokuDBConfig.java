@@ -8,10 +8,10 @@ import javax.sql.DataSource;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-@Configuration
+//@Configuration
 public class HerokuDBConfig {
 
-    @Bean
+//    @Bean
     public DataSource dataSource() throws URISyntaxException {
 
         URI dbUri = new URI(System.getenv("DATABASE_URL"));
