@@ -20,7 +20,8 @@
 				<form:form method="POST" modelAttribute="employe">
 
 					<label>Matricule de l'employé :</label>
-					<form:input path="matricule" />
+					<form:select path="matricule" items="${listeMatricules}"/>
+
 					<br />
 					<label>Entreprise de l'employé :</label>
 					<form:select path="entreprise.id" items="${listeEntreprises}"
