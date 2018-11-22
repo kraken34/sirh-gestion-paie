@@ -20,6 +20,9 @@
 			<td>${bulletin.dateFormat}</td>
 			<td>${bulletin.periode.dateDebutFin}</td>
 			<td>${bulletin.remunerationEmploye.matricule}</td>
+			<td></td>
+			<td></td>
+			<td></td>
 		</tr>
 	</c:forEach>
 </table>
