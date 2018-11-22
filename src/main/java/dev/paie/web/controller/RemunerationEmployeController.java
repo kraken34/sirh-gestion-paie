@@ -1,5 +1,8 @@
 package dev.paie.web.controller;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -44,6 +47,11 @@ public class RemunerationEmployeController {
 
 		mv.addObject("employe", new RemunerationEmploye());
 
+		RestTemplate rt = new RestTemplate();
+		Matricule[] result = rt.getForObject("https://jsonplaceholder.typicode.com/posts", Matricule[].class);
+		
+		mv.addObject("listeMatricules", Arrays.asList(result).stream().map(m -> m.getMatricule()).collect(Collectors.toList()));
+		
 		mv.addObject("listeEntreprises", entrepriseRepo.findAll());
 		mv.addObject("listeProfiles", profileRepo.findAll());
 		mv.addObject("listeGrades", gradeRepo.findAll());
