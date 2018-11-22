@@ -1,13 +1,17 @@
 package dev.paie.web.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.paie.entite.Collegue;
 import dev.paie.entite.RemunerationEmploye;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.GradeRepository;
@@ -46,7 +50,16 @@ public class RemunerationEmployeController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/menu/index");
 
-		remunerationEmployeRepository.save(remunerationEmploye);
+		RestTemplate rt = new RestTemplate();
+		Collegue[] collegue = rt.getForObject("http://collegues-api.cleverapps.io/collegues?matricule=" + remunerationEmploye.getMatricule(),
+				Collegue[].class);
+
+		if (collegue.length > 0) {
+			remunerationEmployeRepository.save(remunerationEmploye);
+			mv.setViewName("/menu/index");
+		} else {
+			mv.setViewName("/employes/creer");//ou rediriger vers un message d'erreur [...]
+		}
 
 		return mv;
 	}

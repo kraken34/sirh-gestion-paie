@@ -18,7 +18,16 @@
 		<br>SIRET : <c:out value="${bulletin.remunerationEmploye.entreprise.siret}"/>
 		<br><br>Période
 		<br><c:out value="${bulletin.periode.dateDebut}"/> --> <c:out value="${bulletin.periode.dateFin}"/>
-		<br><br>Matricule : <c:out value="${bulletin.remunerationEmploye.matricule}"/>
+		<br>Nom :
+		<br><c:out value="${collegue.nom}"/>
+		<br>Prénom :
+		<br><c:out value="${collegue.prenom}"/>
+		<br>Adresse:
+		<br><c:out value="${collegue.adresse}"/>
+		<br>Mail :
+		<br><c:out value="${collegue.email}"/>
+		<br>Matricule : <c:out value="${bulletin.remunerationEmploye.matricule}"/>
+		<br><img src="${collegue.photo}">
 	</div>
 	
 	<div id="salaire" class="tableau">

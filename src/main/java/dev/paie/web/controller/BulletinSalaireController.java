@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.paie.entite.BulletinSalaire;
+import dev.paie.entite.Collegue;
 import dev.paie.entite.Cotisation;
 import dev.paie.entite.ResultatCalculRemuneration;
 import dev.paie.repository.BulletinSalaireRepository;
@@ -117,10 +119,17 @@ public class BulletinSalaireController {
 		for (Cotisation cot : cotisations) {
 			BigDecimal tauxSalarial = Optional.ofNullable(cot.getTauxSalarial()).orElse(new BigDecimal("0"));
 			BigDecimal cotPatronales = Optional.ofNullable(cot.getTauxSalarial()).orElse(new BigDecimal("0"));
-			montantSalarial.put(cot, PaieUtils.formaterBigDecimal(new BigDecimal(resCalcRem.getSalaireBrut()).multiply(tauxSalarial)));
-			cotisationsPatronales.put(cot, PaieUtils.formaterBigDecimal(new BigDecimal(resCalcRem.getSalaireBrut()).multiply(cotPatronales)));
+			montantSalarial.put(cot,
+					PaieUtils.formaterBigDecimal(new BigDecimal(resCalcRem.getSalaireBrut()).multiply(tauxSalarial)));
+			cotisationsPatronales.put(cot,
+					PaieUtils.formaterBigDecimal(new BigDecimal(resCalcRem.getSalaireBrut()).multiply(cotPatronales)));
 		}
 
+		RestTemplate rt = new RestTemplate();
+		Collegue collegue = rt.getForObject("http://collegues-api.cleverapps.io/collegues?matricule="
+				+ bulletin.getRemunerationEmploye().getMatricule(), Collegue[].class)[0];
+
+		mv.addObject("collegue", collegue);
 		mv.addObject("montantSalarial", montantSalarial);
 		mv.addObject("cotisationsPatronales", cotisationsPatronales);
 		mv.addObject("bulletin", bulletin);
