@@ -6,11 +6,10 @@
 <html>
 <c:import url="../head.jsp?title=List Bulletin"></c:import>
 <body>
-	<main class="container">
-	<c:import url="../menu.jsp"></c:import>
-	<h1>Liste des Bulletins	</h1>
-	<a href="<c:url value="creer"/>"><button class="btn btn-primary">Crer un nouveau bulletin</button></a>
-	<br>
+	<main class="container"> <c:import url="../menu.jsp"></c:import>
+	<h1>Liste des Bulletins</h1>
+	<a href="<c:url value="creer"/>"><button class="btn btn-primary">Crer
+			un nouveau bulletin</button></a> <br>
 	<table class="table table-bordered table-dark">
 		<thead>
 			<tr>
@@ -32,7 +31,9 @@
 					<td>${bulletin.value.getSalaireBrut()}</td>
 					<td>${bulletin.value.getNetImposable()}</td>
 					<td>${bulletin.value.getNetAPayer()}</td>
-					<td><a href="<c:url value="find?key=${bulletin.key.getId()}"/>"><button class="btn btn-primary">Visualiser</button></a></td>
+					<td><a
+						href="<c:url value="find?key=${bulletin.key.getId()}"/>"><button
+								class="btn btn-primary">Visualiser</button></a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
