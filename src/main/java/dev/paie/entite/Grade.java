@@ -2,11 +2,28 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import dev.paie.util.PaieUtils;
+
+@Entity
+@Table(name="grade")
 public class Grade {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String code;
+	
+	@Column(name="nb_heures_base")
 	private BigDecimal nbHeuresBase;
+
+	@Column(name="taux_base")
 	private BigDecimal tauxBase;
 	
 	public String getCode() {
@@ -33,6 +50,18 @@ public class Grade {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public String getLibelle() {
+		
+		PaieUtils paieUtil = new PaieUtils();
+		BigDecimal income = nbHeuresBase.multiply(tauxBase.multiply(new BigDecimal(12)));
+		
+		String resultLibelle = this.code + " - " + paieUtil.formaterBigDecimal(income) + "€ / an";
+		
+		return resultLibelle;
+	}
+
+
 	
 	
 
