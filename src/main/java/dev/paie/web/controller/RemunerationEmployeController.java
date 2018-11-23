@@ -1,6 +1,7 @@
 package dev.paie.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class RemunerationEmployeController {
 	@Autowired RemunerationEmployeRepository remunerationEmployeRepository;
 	
 	@RequestMapping(method=RequestMethod.GET, path="/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerEmploye() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/creerEmploye");
@@ -37,6 +39,7 @@ public class RemunerationEmployeController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, path="/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView ajouterEmploye(@ModelAttribute("employe") RemunerationEmploye employe) {
 		
 		RestTemplate rt = new RestTemplate();
@@ -53,6 +56,7 @@ public class RemunerationEmployeController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, path="/lister")
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	public ModelAndView listerEmployes() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/listerEmployes");
@@ -60,6 +64,7 @@ public class RemunerationEmployeController {
 		return mv;
 	}
 	
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	public ModelAndView mauvaisMatricule() {
 		RestTemplate rt = new RestTemplate();
 		Collegue[] result = rt.getForObject("http://collegues-api.cleverapps.io/collegues", Collegue[].class);
