@@ -43,8 +43,10 @@ public class JpaConfig {
         factory.setDataSource(dataSource);
         
         Properties jpaProperties = new Properties(); // <2>
+
         jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create"); // <2>
         jpaProperties.setProperty("javax.persistence.sql-load-script-source", "data.sql"); // <3>
+
 
         factory.setJpaProperties(jpaProperties); // <2> <3>
         

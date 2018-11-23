@@ -32,6 +32,7 @@ import dev.paie.repository.BulletinSalaireRepository;
 import dev.paie.repository.PeriodeRepository;
 import dev.paie.repository.RemunerationEmployeRepository;
 import dev.paie.service.CalculerRemunerationService;
+import dev.paie.util.PaieUtils;
 
 @Controller
 @RequestMapping("/bulletinsalaire")
@@ -90,28 +91,33 @@ public class BulletinSalaireController {
 		ModelAndView mv = new ModelAndView();
 		BulletinSalaire myBuletin = bulletin.findOne(id);
 		ResultatCalculRemuneration calculeResult = remuneration.calculer(myBuletin);
-		Map<Integer, List<BigDecimal>> cotisationCalcule = new HashMap<>();
-		for (Cotisation cotisation : myBuletin.getRemunerationEmploye().getProfilRemuneration()
-				.getCotisations()) {
-			List<BigDecimal> calcule=new ArrayList<>();
-			if(cotisation.getTauxSalarial()!=null) {
-				calcule.add(new BigDecimal(calculeResult.getSalaireBrut()).multiply(cotisation.getTauxSalarial()));
-			}else {
-				calcule.add(null);
-			}
-			if(cotisation.getTauxPatronal()!=null) {
-				calcule.add(new BigDecimal(calculeResult.getSalaireBrut()).multiply(cotisation.getTauxPatronal()));
-			}else {
-				calcule.add(null);
-			}
-			cotisationCalcule.put(cotisation.getId(), calcule);
-		}
-		
+		Map<Integer, List<String>> cotisationCalcule = cotisationCalcule(calculeResult,myBuletin);
 		mv.setViewName("bulletinSalaire/bulletin");
 		mv.addObject("bulletin", myBuletin);
 		mv.addObject("calculeSalaire", calculeResult);
 		mv.addObject("calculeCotisation", cotisationCalcule);
 		return mv;
-
+	}
+	
+	@Transactional
+	public Map<Integer, List<String>> cotisationCalcule(ResultatCalculRemuneration calculeResult ,BulletinSalaire myBuletin){
+		Map<Integer, List<String>> cotisationCalcule = new HashMap<>();
+		for (Cotisation cotisation : myBuletin.getRemunerationEmploye().getProfilRemuneration().getCotisations()) {
+			List<String> calcule = new ArrayList<>();
+			if (cotisation.getTauxSalarial() != null) {
+				calcule.add(PaieUtils.formaterBigDecimal(
+						new BigDecimal(calculeResult.getSalaireBrut()).multiply(cotisation.getTauxSalarial())));
+			} else {
+				calcule.add(null);
+			}
+			if (cotisation.getTauxPatronal() != null) {
+				calcule.add(PaieUtils.formaterBigDecimal(
+						new BigDecimal(calculeResult.getSalaireBrut()).multiply(cotisation.getTauxPatronal())));
+			} else {
+				calcule.add(null);
+			}
+			cotisationCalcule.put(cotisation.getId(), calcule);
+		}
+		return cotisationCalcule;
 	}
 }

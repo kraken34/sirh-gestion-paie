@@ -6,22 +6,28 @@
 <html>
 <c:import url="../head.jsp?title=Crée Employer"></c:import>
 <body>
-	<main class="container"> 
-		<h1>Ajouter un employer</h1>
-		<form:form method="post" modelAttribute="employe">
+	<main class="container">
+	<c:import url="../menu.jsp"></c:import>
+	<h1>Ajouter un employer</h1>
+	<c:if test="${not empty error}">
+		<c:out value="${error}"></c:out>
+	</c:if> 
+	<form:form method="post" modelAttribute="employe">
 		<div class="form-group">
 			<label for="matricule">Matricule</label>
 			<form:input cssClass="form-control" id="matricule" path="matricule" />
 		</div>
 		<div class="form-group">
 			<label for="entreprise">Entreprise</label>
-			<form:select cssClass="form-control" id="entreprise" path="entreprise.id"
-				items="${listeEntreprises}" itemValue="id" itemLabel="denomination"></form:select>
+			<form:select cssClass="form-control" id="entreprise"
+				path="entreprise.id" items="${listeEntreprises}" itemValue="id"
+				itemLabel="denomination"></form:select>
 		</div>
 		<div class="form-group">
 			<label for="profil">Profil</label>
-			<form:select cssClass="form-control" id="profil" path="profilRemuneration.id"
-				items="${listProfil}" itemValue="id" itemLabel="code"></form:select>
+			<form:select cssClass="form-control" id="profil"
+				path="profilRemuneration.id" items="${listProfil}" itemValue="id"
+				itemLabel="code"></form:select>
 		</div>
 		<div class="form-group">
 			<label for="grade">Grade</label>
