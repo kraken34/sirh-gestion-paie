@@ -1,10 +1,4 @@
-/**
- * 
- */
-/**
- * @author formation
- *
- */
+
 package dev.paie.web.controller;
 
 import java.math.BigDecimal;
