@@ -12,8 +12,8 @@
 				id="navbarDropdown" role="button" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Employer </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="/mvc/employes/creer">List</a> <a
-						class="dropdown-item" href="/mvc/employes/list">Creer</a>
+					<a class="dropdown-item" href="/mvc/employes/list">List</a> <a
+						class="dropdown-item" href="/mvc/employes/creer">Creer</a>
 				</div></li>
 
 			<li class="nav-item dropdown"><a

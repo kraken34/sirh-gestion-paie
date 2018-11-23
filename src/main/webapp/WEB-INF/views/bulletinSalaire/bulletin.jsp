@@ -7,6 +7,7 @@
 <c:import url="../head.jsp?title=List Bulletin"></c:import>
 <body>
 	<main class="container">
+	<c:import url="../menu.jsp"></c:import>
 	<h1>Bulletins de salaire</h1>
 	<br>
 	<h2>Salaire</h2>

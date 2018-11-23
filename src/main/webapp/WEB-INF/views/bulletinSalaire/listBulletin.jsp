@@ -7,6 +7,7 @@
 <c:import url="../head.jsp?title=List Bulletin"></c:import>
 <body>
 	<main class="container">
+	<c:import url="../menu.jsp"></c:import>
 	<h1>Liste des Bulletins	</h1>
 	<a href="<c:url value="creer"/>"><button class="btn btn-primary">Crer un nouveau bulletin</button></a>
 	<br>
