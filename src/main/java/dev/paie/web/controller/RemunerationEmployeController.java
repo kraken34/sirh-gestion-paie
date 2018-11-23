@@ -10,6 +10,7 @@ package dev.paie.web.controller;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,6 +41,7 @@ public class RemunerationEmployeController {
 
 	// @RequestMapping(method = RequestMethod.GET, path = "/creer")
 	@GetMapping("/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerEmploye() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/creerEmploye");
@@ -51,6 +53,7 @@ public class RemunerationEmployeController {
 	}
 
 	@PostMapping("/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView submitForm(@ModelAttribute("employe") RemunerationEmploye remunerationEmploye) {
 		ModelAndView mv = new ModelAndView();
 		remunerationEmploye.setDateHeureCreation(LocalDateTime.now());
@@ -71,6 +74,7 @@ public class RemunerationEmployeController {
 	}
 
 	@RequestMapping("/list")
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	public ModelAndView listEmploye() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("employes/listEmployes");

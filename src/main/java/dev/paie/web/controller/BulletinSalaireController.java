@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +47,7 @@ public class BulletinSalaireController {
 
 	// @RequestMapping(method = RequestMethod.GET, path = "/creer")
 	@GetMapping("/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView creerEmploye() {
 
 		ModelAndView mv = new ModelAndView();
@@ -60,6 +62,7 @@ public class BulletinSalaireController {
 
 	@PostMapping("/creer")
 	@Transactional
+	@Secured("ROLE_ADMINISTRATEUR")
 	public String submitForm(@ModelAttribute("bulletin") BulletinSalaire bulletinSalaire) {
 		bulletinSalaire.setDateHeureCreation(LocalDateTime.now());
 		bulletin.save(bulletinSalaire);
@@ -68,6 +71,7 @@ public class BulletinSalaireController {
 
 	@RequestMapping("/list")
 	@Transactional
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	public ModelAndView listBulletin() {
 		ModelAndView mv = new ModelAndView();
 		Map<BulletinSalaire, ResultatCalculRemuneration> mapBulletinCalcule = new HashMap<>();
@@ -81,6 +85,7 @@ public class BulletinSalaireController {
 
 	@Transactional
 	@RequestMapping("/find")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public ModelAndView employerBulletinDetail(@RequestParam("key") int id) {
 		ModelAndView mv = new ModelAndView();
 		BulletinSalaire myBuletin = bulletin.findOne(id);
@@ -94,6 +99,7 @@ public class BulletinSalaireController {
 	}
 	
 	@Transactional
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	public Map<Integer, List<String>> cotisationCalcule(ResultatCalculRemuneration calculeResult ,BulletinSalaire myBuletin){
 		Map<Integer, List<String>> cotisationCalcule = new HashMap<>();
 		for (Cotisation cotisation : myBuletin.getRemunerationEmploye().getProfilRemuneration().getCotisations()) {
