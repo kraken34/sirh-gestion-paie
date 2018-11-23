@@ -1,12 +1,35 @@
 package dev.paie.entite;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="remuneration_employe")
 public class RemunerationEmploye {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String matricule;
+	@ManyToOne
 	private Entreprise entreprise;
+	@ManyToOne
 	private ProfilRemuneration profilRemuneration;
+	@ManyToOne
 	private Grade grade;
+	private LocalDateTime creation = LocalDateTime.now(); 
+	
+	@OneToMany(mappedBy="remunerationEmploye")
+	List<BulletinSalaire> bulletinSalaires;
 	
 	public String getMatricule() {
 		return matricule;
@@ -14,7 +37,6 @@ public class RemunerationEmploye {
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
 	}
-	
 	public Entreprise getEntreprise() {
 		return entreprise;
 	}
@@ -39,9 +61,11 @@ public class RemunerationEmploye {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public LocalDateTime getCreation() {
+		return creation;
+	}
+	public void setCreation(LocalDateTime creation) {
+		this.creation = creation;
+	}
 	
-	
-	
-	
-
 }

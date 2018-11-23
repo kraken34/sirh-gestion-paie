@@ -1,14 +1,27 @@
 package dev.paie.entite;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Periode {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	
+	@Column(name="date_debut")
 	private LocalDate dateDebut;
+	@Column(name="date_fin")
 	private LocalDate dateFin;
+	@OneToMany(mappedBy="periode")
+	private List<BulletinSalaire> bulletinSalaires;
 	
 	public LocalDate getDateDebut() {
 		return dateDebut;
@@ -29,8 +42,7 @@ public class Periode {
 		this.id = id;
 	}
 	
-	
-	
-	
-
+	public String toString() {
+		return "Du "+dateDebut+" au "+dateFin;
+	}
 }
