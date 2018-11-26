@@ -1,11 +1,33 @@
 package dev.paie.entite;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="remuneration_employe")
 public class RemunerationEmploye {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String matricule;
+	@ManyToOne
 	private Entreprise entreprise;
+	@Column(name="date_heure_creation")
+	private LocalDateTime dateHeureCreation;
+	
+	@JoinColumn(name="profil_remuneration")
+	@ManyToOne
 	private ProfilRemuneration profilRemuneration;
+	@ManyToOne
 	private Grade grade;
 	
 	public String getMatricule() {
@@ -39,8 +61,17 @@ public class RemunerationEmploye {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public LocalDateTime getDateHeureCreation() {
+		return dateHeureCreation;
+	}
+	public void setDateHeureCreation(LocalDateTime dateCreation) {
+		this.dateHeureCreation = dateCreation;
+	}
 	
-	
+	public String getDateFormat(String pattern) {
+		DateTimeFormatter format = DateTimeFormatter.ofPattern(pattern);
+		return format.format(dateHeureCreation);
+	}
 	
 	
 
